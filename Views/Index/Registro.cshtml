@@ -1,0 +1,71 @@
+﻿
+
+<html>
+<head>
+    <script src="~/Scripts/MostarContraseña.js"></script>
+    <link href="~/Content/font/bootstrap-icons.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/Index.css" rel="stylesheet" />
+    <title>Iniciar Sesion</title>
+</head>
+<body>
+    <div class="modal-dialog text-center">
+        <center>
+            <div class="col-sm-4 main-section"> @*tamaño de los input de largo*@
+                <div class="modal-content">
+                    <div class="col-12 user-img">
+                        <img src="~/Img/Avatar4.png" />
+                    </div>
+                    <form class="col-12" method="post">
+                        <div class="form-group" id="user-group">
+                            <label for="exampleInputEmail1" style="color:white" class="form-label"><i class="bi bi-people-fill"></i> <b>Usuario</b></label>
+                            <input type="text" name="UsuarioID" class="form-control" placeholder="Nombre del Usuario" />
+                            <div id="emailHelp" class="form-text" style="color:white"><b>Nunca compartiremos su Usuario con nadie más..</b></div>
+                        </div>
+                        <br />
+
+                        <label for="exampleInputPassword1" style="color:white" class="form-label"><i class="bi bi-lock-fill"></i><b>Password</b></label>
+
+
+                        <div class="input-group form-group">
+
+                            <input ID="password" name="password" type="password" placeholder="contraseña" Class="form-control" required>
+
+                            <button name="wf" class="butt-mesas" id="buttonID" type="button" onclick="mostrar()"><i id="IDD" class="bi bi-eye-slash"></i> </button>
+
+                        </div>
+                        <style type="text/css">
+                            .butt-mesas {
+                                display: inline-block;
+                                margin: -2px;
+                                background-color: cornflowerblue;
+                                color: white;
+                                padding: 10px 20px;
+                                width: 55px;
+                            }
+                        </style>
+
+                        <div class="col-12 forgot">
+                            <a href="#">Recordar Contraseña</a>
+                        </div>
+                        <label style="color:red"><b> @ViewBag.Error </b></label>
+                        <br />
+                       <br />
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1" style="color:white">Eres Administrador</label>
+                        <br />
+                        <br />
+                        <button type="submit" class="btn btn-primary"><i class="bi bi-arrow-right-square"></i> Ingresar</button>
+
+                    </form>
+                    <div class="col-12 forgot">
+                        <label style="color:white"><b>No estas registrado?</b></label>&nbsp; &nbsp; <a href="~/Index/Formulario_Registro">Registrate aqui</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </center>
+    </div>
+</body>
+</html>

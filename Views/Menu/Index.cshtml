@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/css/tamañoPantalla.css" rel="stylesheet" />
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principal</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="contenedor">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand">Jonath</a>
+                @*<ul class="navbar-nav flex-grow-1">
+                        <li>@Html.ActionLink("VentasS", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>*@
+                <form class="d-flex" role="search">
+                    @*<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>*@
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <li>@Html.ActionLink("Cerrar Sesion", "Index", "Index", new { area = "" }, new { @class = "nav-link active" })</li>
+                    </ul>
+                </form>
+            </div>
+
+        </nav>
+        <br />
+        <div class="alert alert-info" role="alert">
+            <center> <b> <h3>Hola Bienvenido @ViewBag.Nombre</h3></b></center>
+        </div>
+
+        <script src="~/Content/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+</body>
+</html>

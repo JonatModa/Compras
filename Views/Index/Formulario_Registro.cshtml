@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+
+
+    <script src="~/css/jquery.min.js"></script> @*libreri para mostra imagen y para otras cosas de Jquery*@
+    <script src="~/Scripts/code.js"></script> @*js de mostrar contraseña*@
+    <link href="~/Content/font/bootstrap-icons.css" rel="stylesheet" /> @*libreria de iconos de bootstrap*@
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/css/Index.css" rel="stylesheet" />*@
+    <link href="~/css/Formulario_Registro.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Formulario_Registro</title>
+
+    <style media="screen">
+        .imgRedonda {
+            display: inline-block;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+    </style>
+
+</head>
+<body>
+   <div class="modal-dialog text-center">
+       <center>
+           <div class="col-sm-4 main-section">
+               <div class="modal-content">
+                   <br />
+                   <div id="imagePreview"  class="col-12 user-img">
+                      
+                       <img  src="~/Img/Avatar4.png" />
+                       
+                   </div>
+                   <br />
+
+                   @*<div class="col-12 user-img" id="add-photo-container">
+                       
+                   </div>*@
+               <form class="col-12" method="post" enctype="multipart/form-data" onsubmit="verificarPasswords(); return false">
+
+                   @*<label for="FotoID" style="color:white" class="form-label"><i class="bi bi-image-fill"></i>    <b>Subir Imagen</b></label>*@
+                   <input type="file" id="imagen" name="imagen" accept=".jpg,.png" />
+
+
+                   <br />
+
+                   <div class="form-group" id="NombreDiv">
+                       <label for="NombreID" style="color:white" class="form-label"><i class="bi bi-person-fill-add"></i> <b>Nombre del Usuario</b></label>
+                       <input type="text" id="NombreID" name="NombreID" class="form-control" placeholder="Nombre" autofocus required />
+                       <div class="form-text" style="color:white"><b>Usuario de iniciar Session</b></div>
+                   </div>
+                   <label style="color:red"><b>@ViewBag.Usuario</b></label>
+                   <br />
+                   <div class="form-group" id="ApellidosDiv">
+                       <label for="ApellidosID" style="color:white" class="form-label"><i class="bi bi-people"></i>   <b>Apellidos</b></label>
+                       <input type="text" id="ApellidosID" name="ApellidosID" class="form-control" placeholder="Apellidos" required/>
+                   </div>
+                   <br />
+                   <div class="form-group" id="CorreoDiv">
+                       <label for="CorreoID" style="color:white" class="form-label"><i class="bi bi-envelope-at-fill"></i><b>    Correo Electronico</b></label>
+                       <input type="email" id="CorreoID" name="CorreoID" class="form-control" placeholder="Correo Electronico" required />
+                   </div>
+                   <br />
+
+                   <div class="form-group" id="NumeroDiv">
+                       <label for="NumeroID" style="color:white" class="form-label"><i class="bi bi-telephone-plus-fill"></i>       <b>Telefono</b></label>
+                       <input type="text" onkeypress="return validaNumericos(event)" class="form-control" id="NumeroID" name="NumeroID" placeholder="Telefono" required />
+                       @*es para validar que solo acepte numero no letras*@
+                       <script>
+                           function validaNumericos(event) {
+                               if (event.charCode >= 48 && event.charCode <= 57) {
+                                   return true;
+                               }
+                               return false;
+                           }
+                       </script>
+                   </div>
+
+                   <br />
+                   <div class="form-group" id="DirrecionDiv">
+                       <label for="DireccionID" style="color:white" class="form-label"><i class="bi bi-geo-alt-fill"></i>          <b>Dirección</b></label>
+                       <input type="text" id="DireccionID" name="DireccionID" class="form-control" placeholder="Dirección"  required/>
+                   </div>
+
+                   <br />
+                   @*trabajando en este input*@
+                   <label for="PassID" style="color:white" class="form-label"><i class="bi bi-key-fill"></i>   <b>Contraseña</b></label>
+
+                   <div class="input-group">
+
+                       <input ID="password" name="password" type="password" placeholder="contraseña" Class="form-control" required>
+                       @*<input type="button" name="wf" onclick="mostrar()" class="btn btn-primary"> <i class="bi bi-eye-slash"></i>*@
+
+                       <div class="input-group-append">
+                           <button name="wf" class="btn btn-primary" id="buttonID" type="button" onclick="mostrar()"><i id="IDD" class="bi bi-eye-slash"></i>  </button>
+                       </div>
+
+                   </div>
+                   <br />
+                   <div class="form-group" id="DirrecionDiv">
+
+                       <label for="PassID" style="color:white" class="form-label"><i class="bi bi-key-fill"></i>   <b>Confirmar Contraseña</b></label>
+
+                       <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirmar Contraseña" required/>
+                   </div>
+
+                   <br />
+                   <!-- Mensajes de Verificación -->
+                   <div id="error" class="alert alert-danger ocultar" role="alert">
+                       <i class="bi bi-exclamation-triangle-fill"></i>
+                       Las Contraseñas no coinciden...!
+                   </div>
+                   @if (ViewBag.ErrorContraseña == "ERROR")
+                   {
+                       <div id="ErroCo" class="alert alert-danger " role="alert">
+                           <i class="bi bi-exclamation-triangle-fill"></i>
+                           Las Contraseñas no coinciden...!
+                       </div>
+                   }
+
+
+
+                   <div id="ok" class="alert alert-success ocultar" role="alert">
+                       Las Contraseñas coinciden....
+                   </div>
+                   <!-- Fin Mensajes de Verificación -->
+                   <!-- ocultamos y mostramos los input de alert en css -->
+                   <style type="text/css">
+                       .ocultar {
+                           display: none;
+                       }
+
+                       .mostrar {
+                           display: block;
+                       }
+                   </style>
+                   <script type="text/javascript">
+                       $("#password2").blur(function () {
+                           // Ontenemos los valores de los campos de contraseñas
+                           pass1 = document.getElementById('password');
+                           pass2 = document.getElementById('password2');
+
+                           if (pass1.value != pass2.value) {
+
+                               //alert("no coincide");
+                               // Si las constraseñas no coinciden mostramos un mensaje
+                               document.getElementById("error").classList.add("mostrar");
+
+                               document.getElementById("ok").classList.add("ocultar");
+
+
+                               const btncompra = document.getElementById('login');
+                               btncompra.disabled = true;
+                           }
+                           else {
+
+                               //alert("coinciden");
+
+                               // Si las contraseñas coinciden ocultamos el mensaje de error
+                               document.getElementById("error").classList.remove("mostrar");
+                              
+                               // Mostramos un mensaje mencionando que las Contraseñas coinciden
+                               document.getElementById("ok").classList.remove("ocultar");
+                               
+                               // Desabilitamos el botón de login
+                               const btncompra = document.getElementById('login');
+                               btncompra.disabled = false;
+                               document.getElementById("ErroCo").style.display = 'none'; // hide
+
+
+                           }
+
+                       });
+                   </script>
+                   <br />
+                   <div class="form-group" id="FechaDiv">
+                       <label for="FechaNa" style="color:white" class="form-label"><i class="bi bi-calendar-date"></i>              <b>Fecha de Nacimiento</b></label>
+                       <input type="date" id="FechaNa" name="FechaNa" class="form-control" placeholder="Fecha de Nacimiento" required />
+                   </div>
+                   <br />
+                   <!-- boton de registro -->
+                   <button type="submit" id="login" class="btn btn-primary">Registrar</button>
+                   <br />
+                   <br />
+
+
+
+               </form>
+
+                   <br />
+                   <br />
+                   @*este script es para la imagen selccionada*@ 
+                   @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>*@
+
+
+                   <script type="text/javascript">
+                       (function () {
+                           function filePreview(input) {
+                               if (input.files && input.files[0]) {
+                                   var reader = new FileReader();
+
+                                   reader.onload = function (e) {
+                                       $('#imagePreview').html("<img class='imgRedonda' src='" + e.target.result + "'/>");
+
+                                   }
+                                   reader.readAsDataURL(input.files[0]);
+                               }
+                           }
+                           $('#imagen').change(function () {
+                               filePreview(this);
+                           });
+                       })();
+                   </script>
+
+
+               </div>
+           </div>
+       </center>
+   </div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+﻿@model IEnumerable<Compras.Models.Registro_Usuario>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Administrador</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/Index_Admin.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<br />
+
+<body>
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+
+        <a href='@Url.Action("Create", "Admin")'>
+            <img src="~/Img/nuevo.png" width="60" height="60" />
+        </a>
+    </p>
+
+
+    <br />
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.idCarrito)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellidos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Correo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contraseña)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fecha)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.foto)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Tipo_User)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idCarrito)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Correo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Contraseña)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fecha)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.foto)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tipo_User)
+                    </td>
+                    <td>
+
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.idUsuario })*@
+                        <a href='@Url.Action("Edit", "Admin", new { id = item.idUsuario })'>
+                            <img src="~/Img/new.png" width="30" height="25" />
+                        </a>
+                        &nbsp;&nbsp;
+                        |
+                        &nbsp;&nbsp;
+
+
+                        @*<img src="~/Img/new.png" />*@
+
+                        @*@Html.ActionLink("Details", "Details", new { id = item.idUsuario })*@
+
+                        <a href='@Url.Action("Details", "Admin", new { id = item.idUsuario })'>
+                            <img src="~/Img/Deatlles.png" width="30" height="30" />
+                        </a>
+
+                        &nbsp;&nbsp; | &nbsp;&nbsp;
+
+
+
+                        <a href='@Url.Action("Delete", "Admin", new { id = item.idUsuario })'>
+                            <img src="~/Img/delete.png" width="30" height="30" />
+                        </a>
+
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.idUsuario })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

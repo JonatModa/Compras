@@ -1,0 +1,106 @@
+﻿@model Compras.Models.Registro_Usuario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Registro_Usuario</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.idCarrito)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.idCarrito)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Apellidos)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Correo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Correo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Telefono)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Direccion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Contraseña)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Contraseña)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fecha)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fecha)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.foto)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.foto)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Tipo_User)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Tipo_User)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.idUsuario }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

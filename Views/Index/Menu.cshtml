@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/css/tamañoPantalla.css" rel="stylesheet" />
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Principal</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="contenedor">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand">@ViewBag.Nombre</a>
+                @*<ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("VentasS", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>*@
+                <form class="d-flex" role="search">
+                    @*<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>*@
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <li>@Html.ActionLink("Cerrar Sesion", "Index", "Index", new { area = "" }, new { @class = "nav-link active" })</li>
+                    </ul>
+                </form>
+            </div>
+
+        </nav>
+        <br />
+        <div class="alert alert-info" role="alert">
+            <center> <b> <h3>Hola Bienvenido @ViewBag.Nombre</h3></b></center>
+        </div>
+
+        <br />
+
+         <div class="card border-primary mb-3" style="max-width: 25rem;">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="~/Img/LentesListo.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Lentes</h5>
+                        <p class="card-text">Contamos con diferentes tipo de estilo cada uno vale 50 pesos, preguntar si ahi disponible.</p>
+                    </div>
+
+                    <div class="card-footer bg-transparent border-success">Preguntar..!
+                    <br />
+                    <textarea name="comentario" rows="3" cols="48" id="comentario"></textarea>
+                   <br />
+                   <button type="button" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <script src="~/Content/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+</body>
+</html>
